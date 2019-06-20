@@ -22,6 +22,9 @@
 #
 # Note that if you do not use bisection search, your code will not run - your code only has 30 seconds to run on our servers.
 
+balance = 3329
+annualInterestRate = 0.2
+
 init_balance = balance
 monthlyInterestRate = annualInterestRate/12
 lower = init_balance/12
