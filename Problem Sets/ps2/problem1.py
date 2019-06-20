@@ -34,8 +34,6 @@ monthly_interest_rate = annualInterestRate / 12.0
 for month in range(12):
     minimum_monthly_payment = balance * monthlyPaymentRate
     monthly_unpaid_balance = balance - minimum_monthly_payment
-    updated_balance = monthly_unpaid_balance + (monthly_unpaid_balance * monthly_interest_rate)
-
-    balance = updated_balance
+    balance = monthly_unpaid_balance + (monthly_unpaid_balance * monthly_interest_rate)
 
 print("Remaining balance:", round(balance, 2))
