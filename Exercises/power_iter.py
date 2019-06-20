@@ -9,12 +9,3 @@ def iterPower(base, exp):
     return ans
 
 print(iterPower(2,3))
-
-
-
-
-# *** Iterative Approach ***
-# def iterPower(base, exp):
-#     if exp == 0:
-#         return 1
-#     return base*iterPower(base,exp-1)
