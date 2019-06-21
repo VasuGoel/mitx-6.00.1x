@@ -23,4 +23,4 @@ def isIn(char, aStr):
             return isIn(char, aStr[mid+1:upper+1])
     return False
 
-print(isIn('m', 'abcdefghijk'))
+print(isIn('i', 'abcdefghijk'))
