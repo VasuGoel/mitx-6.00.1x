@@ -9,18 +9,18 @@
 # As you design the function, think very carefully about what the base cases should be.
 
 def isIn(char, aStr):
+    # print(f'aStr - {aStr}')
     lower = 0
     upper = len(aStr)-1
     mid = int(lower+upper/2)
-    print(mid)
-    if char == aStr[mid]:
-        print('inside 1')
-        return True
-    elif char < aStr[mid]:
-        print('inside 2')
-        isIn(char, aStr[lower:mid-1])
-    else:
-        print('inside 3')
-        isIn(char, aStr[mid+1:upper])
+    while lower <= upper:
+        # print(f'lower {lower}, upper {upper}, mid {mid}')
+        if char == aStr[mid]:
+            return True
+        elif char < aStr[mid]:
+            return isIn(char, aStr[lower:mid])
+        else:
+            return isIn(char, aStr[mid+1:upper+1])
+    return False
 
-print(isIn('b', 'abcde'))
+print(isIn('m', 'abcdefghijk'))
