@@ -25,7 +25,7 @@ def loadWords():
     line = inFile.readline()
     # wordlist: list of strings
     wordlist = line.split()
-    print("  ", len(wordlist), "words loaded.")
+    print(len(wordlist), "words loaded.")
     return wordlist
 
 def chooseWord(wordlist):
@@ -82,6 +82,8 @@ def getAvailableLetters(lettersGuessed):
       yet been guessed.
     '''
     # FILL IN YOUR CODE HERE...
+    import string
+
     alphabets = list(string.ascii_lowercase)
     for c in lettersGuessed:
         alphabets.remove(c)
@@ -110,11 +112,38 @@ def hangman(secretWord):
     Follows the other limitations detailed in the problem write-up.
     '''
     # FILL IN YOUR CODE HERE...
-    
+    lettersGuessed = []
+    mistakesMade = 0
+    guessesLeft = 8
 
+    print('Welcome to the game, Hangman!')
+    print('I am thinking of a word that is', len(secretWord), 'letters long.')
 
+    while not isWordGuessed(secretWord, lettersGuessed):
+        if mistakesMade != 8:
+            print(13*'-')
+            print('You have', guessesLeft - mistakesMade, 'guesses left.')
+            print('Available letters:', getAvailableLetters(lettersGuessed))
+            guess = input('Please guess a letter: ').lower()
 
-
+            if guess in lettersGuessed:
+                print('Oops! You\'ve already guessed that letter:', getGuessedWord(secretWord, lettersGuessed))
+                continue
+            else:
+                lettersGuessed.append(guess)
+                if guess in secretWord:
+                    print('Good guess:', getGuessedWord(secretWord, lettersGuessed))
+                else:
+                    mistakesMade += 1
+                    print('Oops! That letter is not in my word:', getGuessedWord(secretWord, lettersGuessed))
+        else:
+            break
+    if mistakesMade == 8:
+        print(13*'-')
+        print('Sorry, you ran out of guesses. The word was', secretWord)
+    else:
+        print(13*'-')
+        print('Congratulations, you won!')
 
 # When you've completed your hangman function, uncomment these two lines
 # and run this file to test! (hint: you might want to pick your own
