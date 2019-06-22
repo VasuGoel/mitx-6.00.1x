@@ -51,7 +51,10 @@ def isWordGuessed(secretWord, lettersGuessed):
       False otherwise
     '''
     # FILL IN YOUR CODE HERE...
-
+    for c in secretWord:
+        if c not in lettersGuessed:
+            return False
+    return True
 
 
 def getGuessedWord(secretWord, lettersGuessed):
@@ -62,7 +65,14 @@ def getGuessedWord(secretWord, lettersGuessed):
       what letters in secretWord have been guessed so far.
     '''
     # FILL IN YOUR CODE HERE...
+    result = ''
+    for c in secretWord:
+        if c in lettersGuessed:
+            result += (c + ' ')
+        else:
+            result += '_ '
 
+    return result
 
 
 def getAvailableLetters(lettersGuessed):
@@ -72,6 +82,11 @@ def getAvailableLetters(lettersGuessed):
       yet been guessed.
     '''
     # FILL IN YOUR CODE HERE...
+    alphabets = list(string.ascii_lowercase)
+    for c in lettersGuessed:
+        alphabets.remove(c)
+    alphabets = ''.join(alphabets)
+    return alphabets
 
 
 def hangman(secretWord):
@@ -95,7 +110,7 @@ def hangman(secretWord):
     Follows the other limitations detailed in the problem write-up.
     '''
     # FILL IN YOUR CODE HERE...
-
+    
 
 
 
@@ -105,5 +120,5 @@ def hangman(secretWord):
 # and run this file to test! (hint: you might want to pick your own
 # secretWord while you're testing)
 
-# secretWord = chooseWord(wordlist).lower()
-# hangman(secretWord)
+secretWord = chooseWord(wordlist).lower()
+hangman(secretWord)
