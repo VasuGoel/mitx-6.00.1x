@@ -20,11 +20,6 @@ for c in s[1:]:
     else:
         seq = c
 
-    print(f'On character - {c}')
-    print(f'Seq - {seq}')
-    print(f'Longest_seq - {longest_seq}')
-    print()
-
 print('Longest substring in alphabetical order is:' + longest_seq)
 
 
