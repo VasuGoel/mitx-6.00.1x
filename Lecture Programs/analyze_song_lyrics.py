@@ -30,10 +30,24 @@ def loadlyrics():
     for line in content:
         l = line.split()
         for word in l:
-            wordlist.append(word)
+            wordlist.append(clean_word(word.lower()))
     print(wordlist, '\n')
     print(len(wordlist), "words processed.\n")
     return wordlist
+
+
+def clean_word(word):
+    """
+    word (str): word to clean
+
+    Returns word with specific special characters removed
+    """
+    string = ''
+    for c in word:
+        if c in [',', '!', '?', '.', '(', ')', '"']:
+            continue
+        string += c
+    return string
 
 
 def welcome():
