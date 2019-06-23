@@ -13,7 +13,7 @@ def loadlyrics():
     Depending on the size of the lyics, this function may
     take a while to finish.
     """
-    print("\nLoading lyrics from file ...")
+    print("\nLoading lyrics from file ...\n")
     # # inFile: file
     # inFile = open(LYRICS_FILENAME, 'r')
     # # line: string
@@ -31,7 +31,7 @@ def loadlyrics():
         l = line.split()
         for word in l:
             wordlist.append(word)
-    print('\n', wordlist, '\n')
+    print(wordlist, '\n')
     print(len(wordlist), "words processed.\n")
     return wordlist
 
@@ -68,3 +68,16 @@ def lyrics_to_frequencies(wordlist):
 
 lyrics_dict = lyrics_to_frequencies(wordlist)
 print(lyrics_dict)
+
+
+def most_common_words(lyrics_dict):
+    values = lyrics_dict.values()
+    best = max(values)
+    words = []
+    for key in lyrics_dict:
+        if lyrics_dict[key] == best:
+            words.append(key)
+    return (words, best)
+
+most_common, freq = most_common_words(lyrics_dict)
+print(f'\n\nMost common word - {most_common}, Frequency - {freq}\n')
