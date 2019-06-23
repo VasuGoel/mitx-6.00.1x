@@ -89,6 +89,12 @@ print(f'\n\nMost common word - {most_common}, Frequency - {freq}\n')
 
 
 def words_often(lyrics_dict, minTimes):
+    """
+    lyrics_dict (dictionary): dictionary containing mapping of different words in lyrics and their frequencies
+    minTimes (int): Threshold frequency
+
+    Returns list of words that appeared in the lyrics at least minTimes
+    """
     result = []
     done = False
     while not done:
