@@ -71,6 +71,11 @@ print(lyrics_dict)
 
 
 def most_common_words(lyrics_dict):
+    """
+    lyrics_dict (dictionary): dictionary containing mapping of different words in lyrics and their frequencies
+
+    Returns most commonly occuring word/s (if many) and their frequency
+    """
     values = lyrics_dict.values()
     best = max(values)
     words = []
