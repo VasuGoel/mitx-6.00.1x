@@ -47,4 +47,24 @@ Instructions: Paste the lyrics of the song you wish to analyze in a new file 'ly
 
 print(welcome())
 input('Press \'Enter\' after you\'ve created \'lyrics.txt\'...')
+# Load the list of words into the variable wordlist so that it can be accessed from anywhere in the program
 wordlist = loadlyrics()
+
+
+def lyrics_to_frequencies(wordlist):
+    """
+    wordlist (list): list of words (strings) of song lyrics
+
+    Returns a dictionary mapping different lyrics words to their frequencies or number of occurences
+    """
+    myDict = {}
+    for word in wordlist:
+        if word in myDict:
+            myDict[word] += 1
+        else:
+            myDict[word] = 1
+    return myDict
+
+
+lyrics_dict = lyrics_to_frequencies(wordlist)
+print(lyrics_dict)
