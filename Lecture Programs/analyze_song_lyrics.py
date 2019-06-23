@@ -86,3 +86,22 @@ def most_common_words(lyrics_dict):
 
 most_common, freq = most_common_words(lyrics_dict)
 print(f'\n\nMost common word - {most_common}, Frequency - {freq}\n')
+
+
+def words_often(lyrics_dict, minTimes):
+    result = []
+    done = False
+    while not done:
+        temp = most_common_words(lyrics_dict)
+        if temp[1] >= minTimes:
+            result.append(temp)
+            for word in temp[0]:
+                del(lyrics_dict[word])
+        else:
+            done = True
+    return result
+
+
+minTimes = int(input('Enter a threshold frequency - '))
+print(f'Words that appeared at least {minTimes} times are - \n')
+print(words_often(lyrics_dict, minTimes), '\n')
