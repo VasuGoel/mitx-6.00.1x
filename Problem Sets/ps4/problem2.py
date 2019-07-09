@@ -40,6 +40,9 @@
 # Implement the updateHand function. Make sure this function has no side effects: i.e., it must not mutate the hand passed in. Before pasting your function definition here, be sure you've passed the appropriate tests in test_ps4a.py.
 
 
+hand = {'a':1, 'q':1, 'l':2, 'm':1, 'u':1, 'i':1}
+
+
 def updateHand(hand, word):
     """
     Assumes that 'hand' has all the letters in word.
@@ -56,4 +59,10 @@ def updateHand(hand, word):
     hand: dictionary (string -> int)
     returns: dictionary (string -> int)
     """
-    # TO DO ... <-- Remove this comment when you code this function
+    hand_clone = hand.copy()
+    for c in word:
+        hand_clone[c] = hand_clone.get(c, 0) - 1
+    return hand_clone
+
+
+print(updateHand(hand, 'quail'))
