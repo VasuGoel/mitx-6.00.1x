@@ -187,8 +187,11 @@ def calculateHandlen(hand):
     hand: dictionary (string-> int)
     returns: integer
     """
-    # TO DO... <-- Remove this comment when you code this function
-
+    length = 0
+    for letter in hand.keys():
+        for i in range(hand[letter]):
+            length += 1
+    return length
 
 
 def playHand(hand, wordList, n):
