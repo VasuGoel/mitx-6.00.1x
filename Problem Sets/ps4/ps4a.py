@@ -221,31 +221,33 @@ def playHand(hand, wordList, n):
     score = 0
     # As long as there are still letters left in the hand:
     while not calculateHandlen(hand) == 0:
-            # Display the hand
+        # Display the hand
+        print('Current Hand: ', end="")
         displayHand(hand)
         # Ask user for input
-        user_input = input('Enter word, or a "." to indicate that you are finished: ')
+        word = input('Enter word, or a "." to indicate that you are finished: ')
         # If the input is a single period:
-        if user_input == '.':
+        if word == '.':
             # End the game (break out of the loop)
-            break
+            print('Goodbye! Total score:', score, 'points.')
+            return
 
         # Otherwise (the input is not a single period):
         else:
             # If the word is not valid:
             if not isValidWord(word, hand, wordList):
                 # Reject invalid word (print a message followed by a blank line)
-                print('Invalid word, please try again.')
+                print('Invalid word, please try again.\n')
             # Otherwise (the word is valid):
             else:
-                score = getWordScore(word, n)
+                score += getWordScore(word, n)
                 # Tell the user how many points the word earned, and the updated total score, in one line followed by a blank line
-                print('\"' + word + '\"', 'earned', score, 'points.', 'Total:', score, 'points\n')
+                print('\"' + word + '\"', 'earned', getWordScore(word, n), 'points.', 'Total:', score, 'points\n')
                 # Update the hand
-                updateHand(hand, word)
+                hand = updateHand(hand, word)
 
     # Game is over (user entered a '.' or ran out of letters), so tell user the total score
-    print('Goodbye! Total score:', score)
+    print('Ran out of letters.', 'Total score:', score, 'points.')
 
 #
 # Problem #5: Playing a game
