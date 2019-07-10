@@ -231,20 +231,21 @@ def playHand(hand, wordList, n):
             break
 
         # Otherwise (the input is not a single period):
-
+        else:
             # If the word is not valid:
-
+            if not isValidWord(word, hand, wordList):
                 # Reject invalid word (print a message followed by a blank line)
-
+                print('Invalid word, please try again.')
             # Otherwise (the word is valid):
-
+            else:
+                score = getWordScore(word, n)
                 # Tell the user how many points the word earned, and the updated total score, in one line followed by a blank line
-
+                print('\"' + word + '\"', 'earned', score, 'points.', 'Total:', score, 'points\n')
                 # Update the hand
-
+                updateHand(hand, word)
 
     # Game is over (user entered a '.' or ran out of letters), so tell user the total score
-
+    print('Goodbye! Total score:', score)
 
 #
 # Problem #5: Playing a game
