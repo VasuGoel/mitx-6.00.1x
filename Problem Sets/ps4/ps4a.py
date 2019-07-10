@@ -222,7 +222,7 @@ def playHand(hand, wordList, n):
     # As long as there are still letters left in the hand:
     while not calculateHandlen(hand) == 0:
         # Display the hand
-        print('Current Hand: ', end="")
+        print('\nCurrent Hand: ', end="")
         displayHand(hand)
         # Ask user for input
         word = input('Enter word, or a "." to indicate that you are finished: ')
