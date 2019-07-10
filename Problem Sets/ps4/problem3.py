@@ -16,3 +16,26 @@ def isValidWord(word, hand, wordList):
     hand: dictionary (string -> int)
     wordList: list of lowercase strings
     """
+    hand_clone = hand.copy()
+    if word in wordList:
+        for c in word:
+            if hand_clone.get(c, 0) == 0:
+                return False
+            hand_clone[c] = hand_clone.get(c, 0) - 1
+        return True
+    return False
+
+    # ALITER - Create list of characters in 'hand' with respective frequencies
+    # hand_list = []
+    # for letter in hand.keys():
+    #     for i in range(hand[letter]):
+    #         hand_list.append(letter)
+    #
+    # if word in wordList:
+    #     for c in word:
+    #         try:
+    #             hand_list.remove(c)
+    #         except ValueError:
+    #             return False
+    #     return True
+    # return False
