@@ -229,7 +229,7 @@ def playHand(hand, wordList, n):
         # If the input is a single period:
         if word == '.':
             # End the game (break out of the loop)
-            print('Goodbye! Total score:', score, 'points.')
+            print('Goodbye! Total score:', score, 'points.\n')
             return
 
         # Otherwise (the input is not a single period):
@@ -247,7 +247,7 @@ def playHand(hand, wordList, n):
                 hand = updateHand(hand, word)
 
     # Game is over (user entered a '.' or ran out of letters), so tell user the total score
-    print('Ran out of letters.', 'Total score:', score, 'points.')
+    print('Ran out of letters.', 'Total score:', score, 'points.\n')
 
 #
 # Problem #5: Playing a game
@@ -265,10 +265,22 @@ def playGame(wordList):
 
     2) When done playing the hand, repeat from step 1
     """
-    # TO DO ... <-- Remove this comment when you code this function
-    print("playGame not yet implemented.") # <-- Remove this line when you code the function
-
-
+    newGame = True
+    while True:
+        user_input = input('Enter n to deal a new hand, r to replay the last hand, or e to end game: ')
+        if user_input == 'n':
+            hand = dealHand(HAND_SIZE)
+            playHand(hand, wordList, HAND_SIZE)
+            newGame = False
+        elif user_input == 'r':
+            if newGame is True:
+                print('You have not played a hand yet. Please play a new hand first!\n')
+            else:
+                playHand(hand, wordList, HAND_SIZE)
+        elif user_input == 'e':
+            return
+        else:
+            print('Invalid command.')
 
 
 #
