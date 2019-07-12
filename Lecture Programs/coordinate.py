@@ -15,5 +15,5 @@ o = Coordinate(0, 0)
 # Point
 p = Coordinate(6, 9)
 
-
 print(f'The distance between point o({o.x},{o.y}) and p({p.x},{p.y}) is: {round(o.distance(p), 2)} units')
+print(f'Distance - {Coordinate.distance(o, p)}')
