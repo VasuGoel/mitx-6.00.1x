@@ -16,7 +16,12 @@ class Coordinate(object):
     def __add__(self, other_coordinate_object):
         return f'({self.x + other_coordinate_object.x}, {self.y + other_coordinate_object.y})'
 
+    # def __sub__(self, other): for overriding '-'
+    # def __eq__(self, other): for overriding '=='
+    # def __len__(self): for overriding 'len(self)'
 
+    def __lt__(self, other_coordinate_object):    #for overriding '<'
+        return f'Write logic to check if point o is less than point p!'
 
 
 # Origin
@@ -31,3 +36,5 @@ print(f'Distance - {Coordinate.distance(o, p)}')
 print(p)
 
 print(f'Addition of point o({o.x},{o.y}) and p({p.x},{p.y}) is: {Coordinate.__add__(o, p)}')
+
+print(o < p)
