@@ -4,7 +4,7 @@ def genPrimes():
     n = 3
     while True:
         # all() Return True if all elements of the iterable are true (or if the iterable is empty) while, any() return True if any element of the iterable is true. If the iterable is empty, return False
-        if all(p % n != 0 for p in primes):
+        if all(n % p != 0 for p in primes):
             primes.append(n)
         if n == primes[-1]:
             yield n
