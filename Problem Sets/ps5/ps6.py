@@ -123,7 +123,14 @@ class Message(object):
         Returns: the message text (string) in which every character is shifted
              down the alphabet by the input shift
         '''
-        pass #delete this line and replace with your code here
+        shift_dict = build_shift_dict(shift)
+        encrypted_text = ''
+        for letter in self.message_text:
+            if letter is ' ' or letter in string.punctuation:
+                encrypted_text += letter
+                continue
+            encrypted_text += shift_dict[letter]
+        return encrypted_text
 
 class PlaintextMessage(Message):
     def __init__(self, text, shift):
