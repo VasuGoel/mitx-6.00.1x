@@ -20,6 +20,8 @@
 #
 # Fill in the apply_shift(self, shift) method of the Message class. You may find it easier to use build_shift_dict(self, shift). Remember that spaces and punctuation should not be changed by the cipher.
 
+import string
+
 def build_shift_dict(shift):
     '''
     Creates a dictionary that can be used to apply a cipher to a letter.
@@ -34,6 +36,7 @@ def build_shift_dict(shift):
     Returns: a dictionary mapping a letter (string) to
              another letter (string).
     '''
+    assert shift >= 0 and shift < 26,'Invalid shift operation.'
     shift_dict = {}
     for l in string.ascii_lowercase + string.ascii_uppercase:
         if l.islower() and ord(l)+shift > 122 or l.isupper() and ord(l)+shift > 90:
@@ -41,3 +44,5 @@ def build_shift_dict(shift):
             continue
         shift_dict[l] = chr(ord(l) + shift)
     return shift_dict
+
+print(build_shift_dict(0))
