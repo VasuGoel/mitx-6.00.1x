@@ -19,3 +19,25 @@
 # A reminder from the introduction page - characters such as the space character, commas, periods, exclamation points, etc will not be encrypted by this cipher - basically, all the characters within string.punctuation, plus the space (' ') and all numerical characters (0 - 9) found in string.digits.
 #
 # Fill in the apply_shift(self, shift) method of the Message class. You may find it easier to use build_shift_dict(self, shift). Remember that spaces and punctuation should not be changed by the cipher.
+
+def build_shift_dict(shift):
+    '''
+    Creates a dictionary that can be used to apply a cipher to a letter.
+    The dictionary maps every uppercase and lowercase letter to a
+    character shifted down the alphabet by the input shift. The dictionary
+    should have 52 keys of all the uppercase letters and all the lowercase
+    letters only.
+
+    shift (integer): the amount by which to shift every letter of the
+    alphabet. 0 <= shift < 26
+
+    Returns: a dictionary mapping a letter (string) to
+             another letter (string).
+    '''
+    shift_dict = {}
+    for l in string.ascii_lowercase + string.ascii_uppercase:
+        if l.islower() and ord(l)+shift > 122 or l.isupper() and ord(l)+shift > 90:
+            shift_dict[l] = chr(ord(l)+shift - 26)
+            continue
+        shift_dict[l] = chr(ord(l) + shift)
+    return shift_dict
