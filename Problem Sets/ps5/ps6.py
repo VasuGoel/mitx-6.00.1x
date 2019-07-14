@@ -102,6 +102,7 @@ class Message(object):
         Returns: a dictionary mapping a letter (string) to
                  another letter (string).
         '''
+        assert shift >= 0 and shift < 26,'Invalid shift operation.'
         shift_dict = {}
         for l in string.ascii_lowercase + string.ascii_uppercase:
             if l.islower() and ord(l)+shift > 122 or l.isupper() and ord(l)+shift > 90:
