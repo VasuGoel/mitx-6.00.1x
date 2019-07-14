@@ -20,9 +20,8 @@
 #
 # Fill in the apply_shift(self, shift) method of the Message class. You may find it easier to use build_shift_dict(self, shift). Remember that spaces and punctuation should not be changed by the cipher.
 
-import string
 
-def build_shift_dict(shift):
+def build_shift_dict(self, shift):
     '''
     Creates a dictionary that can be used to apply a cipher to a letter.
     The dictionary maps every uppercase and lowercase letter to a
@@ -45,4 +44,24 @@ def build_shift_dict(shift):
         shift_dict[l] = chr(ord(l) + shift)
     return shift_dict
 
-print(build_shift_dict(0))
+
+def apply_shift(self, shift):
+    '''
+    Applies the Caesar Cipher to self.message_text with the input shift.
+    Creates a new string that is self.message_text shifted down the
+    alphabet by some number of characters determined by the input shift
+
+    shift (integer): the shift with which to encrypt the message.
+    0 <= shift < 26
+
+    Returns: the message text (string) in which every character is shifted
+         down the alphabet by the input shift
+    '''
+    shift_dict = build_shift_dict(shift)
+    encrypted_text = ''
+    for letter in self.message_text:
+        if letter is ' ' or letter in string.punctuation:
+            encrypted_text += letter
+            continue
+        encrypted_text += shift_dict[letter]
+    return encrypted_text
