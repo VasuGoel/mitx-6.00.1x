@@ -224,27 +224,24 @@ class CiphertextMessage(Message):
         Returns: a tuple of the best shift value used to decrypt the message
         and the decrypted message text using that shift value
         '''
-        s = 1
         best_count = 0
-        while s < 26:
-            assert s >= 0 and s < 26,'Invalid shift operation.'
-            decoded_text = self.apply_shift(26-s)
+        for i in range(1,27):
+            decoded_text = self.apply_shift(26-i)
             count = 0
-            for word in decoded_text:
+            for word in decoded_text.split():
                 if is_word(self.valid_words, word):
                     count += 1
-            if count > best:
-                best = count
-                shift_value = s
-        return shift_value, self.apply_shift(26-s)
-
+            if count > best_count:
+                best_count = count
+                best_shift_value = 26-i
+        return best_shift_value, self.apply_shift(best_shift_value)
 
 #Example test case (PlaintextMessage)
-plaintext = PlaintextMessage('hello', 2)
-print('Expected Output: jgnnq')
-print('Actual Output:', plaintext.get_message_text_encrypted())
+# plaintext = PlaintextMessage('hello', 2)
+# print('Expected Output: jgnnq')
+# print('Actual Output:', plaintext.get_message_text_encrypted())
 
-#Example test case (CiphertextMessage)
-ciphertext = CiphertextMessage('jgnnq')
-print('Expected Output:', (24, 'hello'))
+# #Example test case (CiphertextMessage)
+ciphertext = CiphertextMessage('hello')
+# print('Expected Output:', (24, 'hello'))
 print('Actual Output:', ciphertext.decrypt_message())
