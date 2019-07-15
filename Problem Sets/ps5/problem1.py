@@ -44,7 +44,6 @@ def build_shift_dict(self, shift):
         shift_dict[l] = chr(ord(l) + shift)
     return shift_dict
 
-
 def apply_shift(self, shift):
     '''
     Applies the Caesar Cipher to self.message_text with the input shift.
@@ -57,10 +56,10 @@ def apply_shift(self, shift):
     Returns: the message text (string) in which every character is shifted
          down the alphabet by the input shift
     '''
-    shift_dict = build_shift_dict(shift)
+    shift_dict = self.build_shift_dict(shift)
     encrypted_text = ''
     for letter in self.message_text:
-        if letter is ' ' or letter in string.punctuation:
+        if letter is ' ' or letter in string.punctuation or letter in string.digits:
             encrypted_text += letter
             continue
         encrypted_text += shift_dict[letter]
