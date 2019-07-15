@@ -237,11 +237,15 @@ class CiphertextMessage(Message):
         return best_shift_value, self.apply_shift(best_shift_value)
 
 #Example test case (PlaintextMessage)
-# plaintext = PlaintextMessage('hello', 2)
-# print('Expected Output: jgnnq')
-# print('Actual Output:', plaintext.get_message_text_encrypted())
+plaintext = PlaintextMessage('hello', 2)
+print('Expected Output: jgnnq')
+print('Actual Output:', plaintext.get_message_text_encrypted())
 
 # #Example test case (CiphertextMessage)
 ciphertext = CiphertextMessage('hello')
-# print('Expected Output:', (24, 'hello'))
+print('Expected Output:', (24, 'hello'))
 print('Actual Output:', ciphertext.decrypt_message())
+
+def decrypt_story():
+    storytext = CiphertextMessage(get_story_string())
+    return storytext.decrypt_message()
